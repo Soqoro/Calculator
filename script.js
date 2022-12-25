@@ -3,6 +3,7 @@ let num1 = '';
 let num2 = '';
 let operatorOn = false;
 let opval = '';
+let decimalOn = false;
 
 function add(num1,num2)
 {
@@ -21,14 +22,6 @@ function multiply(num1,num2)
 
 function divide(num1,num2)
 {
-    console.log(`test1:${num2}`);
-    if(num2 == 0)
-    {
-        console.log('did this happen?');
-        display.textContent = "Did you just try to divide by 0?";
-        console.log('did this happen2?');
-        setTimeout(()=>{return num1},100000);
-    }
     return num1/num2;
 }
 
@@ -57,6 +50,7 @@ function operate(num,num2,operator)
 function op(e)
 {
     let pressedOp = e.target.textContent;
+    decimalOn = false;
     if(num2 == '')
     {
         if(pressedOp != '=')
@@ -105,15 +99,36 @@ const multiplyer = document.getElementById('multiply');
 const divider = document.getElementById('divide');
 const equal = document.getElementById("=");
 const clear = document.getElementById("clear");
+const decimal = document.getElementById("decimal");
+const del = document.getElementById("delete");
 adder.addEventListener('click',(e)=>op(e));
 minus.addEventListener('click',(e)=>op(e));
 multiplyer.addEventListener('click',(e)=>op(e));
 divider.addEventListener('click',(e)=>op(e));
 equal.addEventListener('click', (e)=>op(e));
+
 clear.addEventListener('click',()=>{
     display.textContent = '';
     num1 = '';
     num2 = '';
     operatorOn = false;
     opval = '';
+    decimalOn = false;
 });
+
+decimal.addEventListener('click',()=>{
+    if(decimalOn == false)
+    {
+        if(operatorOn)
+        {
+            num2 += '.';
+            display.textContent = num2;
+        }
+        else
+        {
+            num1 += '.';
+            display.textContent = num1;
+        }
+        decimalOn = true;
+    }
+})
