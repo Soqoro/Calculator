@@ -4,6 +4,11 @@ body {
     margin-top: 7%;
     background-color: aliceblue;
 }
+#displaytext {
+    font-size: x-large;
+    text-align: end;
+}
+
 #container {
     display: flex;
     width: 500px;
@@ -31,7 +36,7 @@ body {
 }
 
 #operators {
-    width: 188px;
+    width: 198px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;

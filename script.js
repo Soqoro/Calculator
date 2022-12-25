@@ -1,4 +1,4 @@
-const display = document.getElementById("display");
+const display = document.getElementById("displaytext");
 let num1 = '';
 let num2 = '';
 let operatorOn = false;
@@ -100,12 +100,25 @@ const divider = document.getElementById('divide');
 const equal = document.getElementById("=");
 const clear = document.getElementById("clear");
 const decimal = document.getElementById("decimal");
-const del = document.getElementById("delete");
+const del = document.getElementById("del");
 adder.addEventListener('click',(e)=>op(e));
 minus.addEventListener('click',(e)=>op(e));
 multiplyer.addEventListener('click',(e)=>op(e));
 divider.addEventListener('click',(e)=>op(e));
 equal.addEventListener('click', (e)=>op(e));
+
+del.addEventListener('click',()=>{
+    if(operatorOn)
+    {
+        num2 = num2.slice(0,-1);
+        display.textContent = num2;
+    }
+    else
+    {
+        num1 = num1.slice(0,-1);
+        display.textContent = num1;
+    }
+})
 
 clear.addEventListener('click',()=>{
     display.textContent = '';
